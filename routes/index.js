@@ -3,9 +3,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-router.get('/VerifyToken',function(req,res,next){
+  var sig = req.signature;
+  var echo = req.echostr;
+  var timestamp = req.timestamp;
+  var nonce = req.nonce;
   console.log(req.query);
+  res.write(echo);
+  res.end();
 });
 module.exports = router;
