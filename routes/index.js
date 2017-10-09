@@ -3,8 +3,8 @@ var router = express.Router();
 var crypto = require('crypto');
 /* GET home page. */
 function checkSignature(query){
+  if(query.echostr == null) return false;
   var sig = query.signature;
-  
   var timestamp = query.timestamp;
   var nonce = query.nonce;
   var arry = ["wohnb",timestamp,nonce];
@@ -20,7 +20,9 @@ router.get('/', function(req, res, next) {
   {
     res.end(query.echostr);
   }
+});
+router.post('/', function(req, res, next) {
+  var query = req.query;
   console.log(query);
-  
 });
 module.exports = router;
