@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
   var timestamp = req.timestamp;
   var nonce = req.nonce;
   console.log(req.query);
-  res.write(echo);
-  res.end();
+  res.end(echo);
 });
 module.exports = router;
