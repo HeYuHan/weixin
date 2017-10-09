@@ -16,7 +16,7 @@ function checkSignature(query){
 }
 router.get('/', function(req, res, next) {
   var query = req.query;
-  if(!checkSignature(query))
+  if(checkSignature(query))
   {
     res.end(query.echostr);
   }
