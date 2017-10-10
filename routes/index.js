@@ -22,7 +22,5 @@ router.get('/', function(req, res, next) {
   }
 });
 router.post('/', function(req, res, next) {
-  var query = req.query;
-  console.log(query);
 });
 module.exports = router;
