@@ -1,6 +1,8 @@
 var express = require('express');
-var router = express.Router();
 var crypto = require('crypto');
+var xml2json = require('xml2js');
+var router = express.Router();
+
 /* GET home page. */
 function checkSignature(query){
   if(query.echostr == null) return false;
@@ -28,7 +30,7 @@ router.post('/', function(req, res, next) {
     req.rawBody += data;
   });
   req.on('end',function(){
-    console.log(req.rawBody);
+    console.log(xml2json.parseString(req.rawBody) );
     res.end('ff');
   });
 });
