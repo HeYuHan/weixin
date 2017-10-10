@@ -22,5 +22,14 @@ router.get('/', function(req, res, next) {
   }
 });
 router.post('/', function(req, res, next) {
+  var query = req.query;
+  req.rawBody = '';
+  req.on('data',function(data){
+    req.rawBody += data;
+  });
+  req.on('end',function(){
+    console.log(req.rawBody);
+    res.end('ff');
+  });
 });
 module.exports = router;
