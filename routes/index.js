@@ -30,7 +30,8 @@ router.post('/', function(req, res, next) {
     req.rawBody += data;
   });
   req.on('end',function(){
-    console.log(xml2json.parseString(req.rawBody) );
+    var parser = new xml2json.Parser();
+    console.log(parser.parseString(req.rawBody) );
     res.end('ff');
   });
 });
